@@ -1,5 +1,4 @@
 const axios = require("axios");
-
 class SeLogerAPI {
   constructor(codesPostaux) {
     this.options = {
@@ -25,7 +24,8 @@ class SeLogerAPI {
     axios
       .request(this.options)
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
+        return response.data;
       })
       .catch(function (error) {
         console.error(error);
@@ -35,4 +35,6 @@ class SeLogerAPI {
 
 
 let selogerAPI = new SeLogerAPI("59");
-selogerAPI.getPropertiesList();
+let properties59 = selogerAPI.getPropertiesList();
+
+console.log(properties59);
