@@ -1,11 +1,11 @@
 const axios = require("axios");
 class SeLogerAPI {
-  constructor(codesPostaux) {
+  constructor() {
     this.options = {
       method: "GET",
       url: "https://seloger.p.rapidapi.com/properties/list",
       params: {
-        zipCodes: codesPostaux,
+        zipCodes: "59",
         pageIndex: "1",
         pageSize: "50",
         realtyTypes: "1",
@@ -20,21 +20,26 @@ class SeLogerAPI {
     };
   }
 
-  getPropertiesList() {
-    axios
+  getPropertiesList(codePostaux) {
+    this.options.params.zipCodes = codePostaux;
+  
+    return axios
       .request(this.options)
       .then(function (response) {
-        // console.log(response.data);
         return response.data;
       })
       .catch(function (error) {
         console.error(error);
       });
   }
+  
 }
 
+let selogerAPI = new SeLogerAPI();
 
-let selogerAPI = new SeLogerAPI("59");
-let properties59 = selogerAPI.getPropertiesList();
+selogerAPI.getPropertiesList("59").then(function (properties59) {
+  console.log(properties59);
+});
 
-console.log(properties59);
+// let properties59 = selogerAPI.getPropertiesList("59");
+// console.log(properties59);
