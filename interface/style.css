@@ -22,7 +22,7 @@ body {
   width: 49%;
 }
 
-.searchBar input[type="button"] {
+.searchBar button {
   border-radius: 10px;
   border: 2px solid black;
   padding: 10px;
@@ -30,12 +30,12 @@ body {
   transition: 250ms;
 }
 
-.searchBar input[type="button"]:hover {
-  filter: invert(100%);
+.searchBar button:hover{
+  /* filter: invert(100%); */
   transform: scale(95%);
 }
 
-.searchBar input[type="button"]:active {
+.searchBar button:active {
   transform: scale(90%);
 }
 

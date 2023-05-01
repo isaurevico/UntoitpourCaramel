@@ -1,16 +1,20 @@
 const mysql = require("mysql");
-const dbName = "agregator";
+const dbName = "db_caramel";
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "(R9j2H?m",
   database: dbName,
+  connectionLimit: 10,
 });
 
 db.connect(function (err) {
   if (err) throw err;
   console.log("Connecté à la base de données MySQL!");
 });
+
+module.exports = db;
+
 
 /*
 ===Structure de données===
