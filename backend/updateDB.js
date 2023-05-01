@@ -1,6 +1,9 @@
 const SeLogerAPI = require("./backendAPI.js");
 const mysql = require("mysql");
 
+// import { SeLogerAPI } from "./backendAPI.js";
+// import mysql from "mysql.js";
+
 const dbName = "db_caramel";
 const db = mysql.createConnection({
   host: "localhost",
@@ -15,7 +18,7 @@ db.connect(function (err) {
   console.log("Connecté à la base de données MySQL!");
 });
 
-function updateDB() {
+/*export*/ function updateDB() {
   let selogerAPI = new SeLogerAPI();
 
   selogerAPI.getPropertiesList("59").then(function (properties59) {

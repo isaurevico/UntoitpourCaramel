@@ -2,15 +2,32 @@
 // import { SeLogerAPI } from "./backendAPI.js";
 // const selogerAPI = new SeLogerAPI();
 
-// const db = require("./updateDB");
-const {db, updateDB} = require("./updateDB.js");
+const { db, updateDB } = require("./updateDB.js");
+// import updateDB, {db} from "./updateDB.js";
+
+let obj_list = new Array();
+let obj = {};
 
 db.query("SELECT * FROM caramel", (err, res) => {
   if (err) throw err;
-  console.log(res);
+
+  for (let i = 0; i < res.length; i++) {
+    obj.id = res[i].id;
+    obj.bedrooms = res[i].bedrooms;
+    obj.businessUnit = res[i].businessUnit;
+    obj.city = res[i].city;
+    obj.rooms = res[i].rooms;
+    obj.title = res[i].title;
+    obj.livingArea = res[i].livingArea;
+    obj.price = res[i].price;
+
+    obj_list.push(obj);
+  }
+  console.log(obj_list);
 });
 
 db.end();
+
 // let annonces = document.getElementsByClassName("annonce");
 
 // for (annonce in annonces) {

@@ -2,7 +2,10 @@
 
 const db = require("./updateDB.js")
 const axios = require("axios");
-class SeLogerAPI {
+
+// import db from "./updateDB.js";
+// import axios from "axios";
+/*export*/ class SeLogerAPI {
   constructor() {
     this.options = {
       method: "GET",
