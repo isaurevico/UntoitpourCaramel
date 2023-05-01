@@ -2,14 +2,13 @@
 // import { SeLogerAPI } from "./backendAPI.js";
 // const selogerAPI = new SeLogerAPI();
 
-const db = require("./updateDB");
+// const db = require("./updateDB");
+const {db, updateDB} = require("./updateDB.js");
 
 db.query("SELECT * FROM caramel", (err, res) => {
   if (err) throw err;
   console.log(res);
 });
-
-
 
 db.end();
 // let annonces = document.getElementsByClassName("annonce");

@@ -1,5 +1,6 @@
 const SeLogerAPI = require("./backendAPI.js");
 const mysql = require("mysql");
+
 const dbName = "db_caramel";
 const db = mysql.createConnection({
   host: "localhost",
@@ -14,41 +15,41 @@ db.connect(function (err) {
   console.log("Connecté à la base de données MySQL!");
 });
 
-module.exports = db;
+function updateDB() {
+  let selogerAPI = new SeLogerAPI();
 
-// let selogerAPI = new API.SeLogerAPI();
-let selogerAPI = new SeLogerAPI();
+  selogerAPI.getPropertiesList("59").then(function (properties59) {
+    const res = JSON.parse(JSON.stringify(properties59));
 
-selogerAPI.getPropertiesList("59").then(function (properties59) {
-  const res = JSON.parse(JSON.stringify(properties59));
+    for (let i = 0; i < res["items"].length; i++) {
+      let obj = {
+        id: res["items"][i]["id"],
+        bedrooms: res["items"][i]["bedrooms"],
+        businessUnit: res["items"][i]["businessUnit"],
+        city: res["items"][i]["city"],
+        rooms: res["items"][i]["rooms"],
+        title: res["items"][i]["title"],
+        livingArea: res["items"][i]["livingArea"],
+        price: res["items"][i]["price"],
+      };
 
-  for (let i = 0; i < res["items"].length; i++) {
-    let obj = {
-      id: res["items"][i]["id"],
-      bedrooms: res["items"][i]["bedrooms"],
-      businessUnit: res["items"][i]["businessUnit"],
-      city: res["items"][i]["city"],
-      rooms: res["items"][i]["rooms"],
-      title: res["items"][i]["title"],
-      livingArea: res["items"][i]["livingArea"],
-      price: res["items"][i]["price"],
-    };
-
-    for (let key in obj) {
-      if (obj[key].toString().includes("'")) {
-        obj[key] = obj[key].toString().replace("'", " ");
+      for (let key in obj) {
+        if (obj[key].toString().includes("'")) {
+          obj[key] = obj[key].toString().replace("'", " ");
+        }
       }
+
+      let query = `INSERT INTO \`caramel\` (\`id\`, \`bedrooms\`, \`businessUnit\`, \`city\`, \`rooms\`, \`title\`, \`livingArea\`, \`price\`) VALUES ('${obj.id}', '${obj.bedrooms}', '${obj.businessUnit}', '${obj.city}', '${obj.rooms}', '${obj.title}', '${obj.livingArea}', '${obj.price}');`;
+      db.query(query, (err, res) => {
+        if (err) throw err;
+      });
     }
+    db.end();
+    console.log("DB updated!");
+  });
+}
 
-    let query = `INSERT INTO \`caramel\` (\`id\`, \`bedrooms\`, \`businessUnit\`, \`city\`, \`rooms\`, \`title\`, \`livingArea\`, \`price\`) VALUES ('${obj.id}', '${obj.bedrooms}', '${obj.businessUnit}', '${obj.city}', '${obj.rooms}', '${obj.title}', '${obj.livingArea}', '${obj.price}');`;
-    db.query(query, (err, res) => {
-      if (err) throw err;
-    });
-  }
-  db.end();
-  console.log("DB updated!");
-});
-
+module.exports = { db, updateDB };
 
 /*
 ===Structure de données===
