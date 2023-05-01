@@ -76,6 +76,6 @@ selogerAPI.getPropertiesList("59").then(function (properties59) {
       if (err) throw err;
     });
   }
-
+  db.end();
   console.log("DB updated!");
 });
