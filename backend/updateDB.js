@@ -24,6 +24,7 @@ db.connect(function (err) {
   selogerAPI.getPropertiesList("59").then(function (properties59) {
     const res = JSON.parse(JSON.stringify(properties59));
 
+    // On stocke les données voulues dans un objet
     for (let i = 0; i < res["items"].length; i++) {
       let obj = {
         id: res["items"][i]["id"],
@@ -36,13 +37,15 @@ db.connect(function (err) {
         price: res["items"][i]["price"],
       };
 
+      // On retire les apostrophes des valeurs pour éviter les erreurs SQL
       for (let key in obj) {
         if (obj[key].toString().includes("'")) {
           obj[key] = obj[key].toString().replace("'", " ");
         }
       }
 
-      let query = `INSERT INTO \`caramel\` (\`id\`, \`bedrooms\`, \`businessUnit\`, \`city\`, \`rooms\`, \`title\`, \`livingArea\`, \`price\`) VALUES ('${obj.id}', '${obj.bedrooms}', '${obj.businessUnit}', '${obj.city}', '${obj.rooms}', '${obj.title}', '${obj.livingArea}', '${obj.price}');`;
+      // On insère les données dans la base de données
+      let query = `INSERT IGNORE INTO \`caramel\` (\`id\`, \`bedrooms\`, \`businessUnit\`, \`city\`, \`rooms\`, \`title\`, \`livingArea\`, \`price\`) VALUES ('${obj.id}', '${obj.bedrooms}', '${obj.businessUnit}', '${obj.city}', '${obj.rooms}', '${obj.title}', '${obj.livingArea}', '${obj.price}');`;
       db.query(query, (err, res) => {
         if (err) throw err;
       });
@@ -53,6 +56,8 @@ db.connect(function (err) {
 }
 
 module.exports = { db, updateDB };
+
+updateDB();
 
 /*
 ===Structure de données===

@@ -1,17 +1,13 @@
-// const api = require("./backendAPI.js");
-// import { SeLogerAPI } from "./backendAPI.js";
-// const selogerAPI = new SeLogerAPI();
-
-const { db, updateDB } = require("./updateDB.js");
+const { db } = require("./updateDB.js");
 // import updateDB, {db} from "./updateDB.js";
 
 let obj_list = new Array();
-let obj = {};
 
 db.query("SELECT * FROM caramel", (err, res) => {
   if (err) throw err;
 
   for (let i = 0; i < res.length; i++) {
+    let obj = {};
     obj.id = res[i].id;
     obj.bedrooms = res[i].bedrooms;
     obj.businessUnit = res[i].businessUnit;
@@ -25,8 +21,6 @@ db.query("SELECT * FROM caramel", (err, res) => {
   }
   console.log(obj_list);
 });
-
-db.end();
 
 // let annonces = document.getElementsByClassName("annonce");
 
