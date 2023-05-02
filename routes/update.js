@@ -101,4 +101,5 @@ router.get("/", function (req, res, next) {
   );
   res.redirect("/apparts");
 });
+
 module.exports = router;
