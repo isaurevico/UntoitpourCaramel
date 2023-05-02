@@ -39,10 +39,11 @@ class SeLogerAPI {
   }
 }
 
-function updateDB() {
+function updateDB(department = "59") {
   let selogerAPI = new SeLogerAPI();
+//   let zipCode = document.getElementById("zipCode").value;
 
-  selogerAPI.getPropertiesList("59").then(function (properties59) {
+  selogerAPI.getPropertiesList(department).then(function (properties59) {
     const res = JSON.parse(JSON.stringify(properties59));
 
     // On stocke les données voulues dans un objet
@@ -85,15 +86,37 @@ function updateDB() {
 }
 
 router.get("/", function (req, res, next) {
+
+    var filter = {
+        dep: "1024",
+        city: "",
+        bedrooms: "",
+        rooms: "",
+        livingArea: "",
+        priceMin: "",
+        priceMax: "",
+    };
+
+    // Si on filtre
+    if (req.url != "/") {
+        filter.dep = req.query.dep;
+        filter.city = req.query.city;
+        filter.bedrooms = req.query.bedrooms;
+        filter.rooms = req.query.rooms;
+        filter.livingArea = req.query.livingArea;
+        filter.priceMin = req.query.priceMin;
+        filter.priceMax = req.query.priceMax;
+    }
+
   // verifier que last update < 1h
   connection.query(
     "SELECT timestamp FROM updates ORDER BY id DESC",
     function (err, rows) {
       let timestamp = Date.now();
       // si oui, update
-      if (timestamp - rows[0].timestamp > 3_600_000) {
+      if (timestamp - rows[0].timestamp > 3_600_000 || filter.dep != "1024") {
         console.log("Updating DB...");
-        updateDB();
+        updateDB(dep);
       } else {
         console.log("DB already up to date!");
       }
