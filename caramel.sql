@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : lun. 01 mai 2023 à 13:34
+-- Généré le : mar. 02 mai 2023 à 08:14
 -- Version du serveur : 8.0.32
 -- Version de PHP : 8.2.5
 
@@ -64,12 +64,12 @@ INSERT INTO `caramel` (`id`, `bedrooms`, `businessUnit`, `city`, `rooms`, `title
 (198029819, 3, 'SL', 'Lille', 4, 'Appartement', 94, 540),
 (196869893, 4, 'SL', 'Lille', 5, 'Appartement', 83, 515),
 (201004953, 4, 'SL', 'Tourcoing', 5, 'Appartement', 150, 420),
-(198996569, 1, 'SL', 'Bailleul', 2, 'Appartement', 37.87, 548),
 (198500757, 1, 'SL', 'Roubaix', 2, 'Appartement', 61.3, 836),
 (196828907, 0, 'SL', 'Lille', 1, 'Appartement', 20, 532),
 (199677669, 3, 'SL', 'Lille', 4, 'Appartement', 135, 1720),
-(199677669, 3, 'SL', 'Lille', 4, 'Appartement', 135, 1720),
+(199921933, 2, 'SL', 'Lille', 3, 'Appartement', 79, 1195),
 (197842363, 2, 'SL', 'Cambrai', 3, 'Appartement', 72, 710),
+(198996569, 1, 'SL', 'Bailleul', 2, 'Appartement', 37.87, 548),
 (199245061, 0, 'SL', 'Lille', 1, 'Appartement', 11.34, 440),
 (201579603, 0, 'SL', 'Cambrai', 1, 'Appartement', 20, 450),
 (197421331, 2, 'SL', 'Mouvaux', 3, 'Appartement', 200, 2100),
@@ -87,12 +87,12 @@ INSERT INTO `caramel` (`id`, `bedrooms`, `businessUnit`, `city`, `rooms`, `title
 (197836301, 3, 'SL', 'Roubaix', 2, 'Appartement', 100, 430),
 (201599295, 0, 'SL', 'Lille', 1, 'Appartement', 22.38, 481),
 (201014089, 2, 'SL', 'Lille', 3, 'Appartement', 63.87, 1500),
+(201789265, 3, 'SL', 'Lille', 4, 'Appartement', 66, 1380),
+(201679975, 1, 'SL', 'Roubaix', 3, 'Appartement', 53, 640),
 (200498077, 2, 'SL', 'Lille', 3, 'Appartement', 48, 770),
 (200791115, 1, 'SL', 'Lille', 2, 'Appartement', 36, 839),
 (200911933, 0, 'SL', 'La Madeleine', 1, 'Appartement', 24, 585),
-(200489463, 2, 'SL', 'Maubeuge', 3, 'Appartement', 55, 495),
-(200379393, 0, 'SL', 'Valenciennes', 1, 'Appartement', 26, 505),
-(201464483, 1, 'SL', 'Hazebrouck', 2, 'Appartement', 39, 430);
+(200489463, 2, 'SL', 'Maubeuge', 3, 'Appartement', 55, 495);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
