@@ -28,6 +28,7 @@
             <th>Living Area</th>
             <th>Price</th>
             <th>Title</th>
+            <th>Link</th>
           </tr>
         </thead>
         <tbody>
@@ -40,6 +41,7 @@
             <td><%= data[i].livingArea %> m²</td>
             <td><%= data[i].price %> €</td>
             <td><%= data[i].title %></td>
+            <td><a href="<%= data[i].permalink %>">Link</a></td>
 
           </tr>
           <% } }else{ %>
