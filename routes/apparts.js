@@ -37,4 +37,9 @@ router.get("/", function (req, res, next) {
   });
 });
 
+// document.getElementById("search").addEventListener("keyup", function (e) {
+//   var searchInput = document.getElementById("search");
+//   console.log(searchInput.value);
+// });
+
 module.exports = router;

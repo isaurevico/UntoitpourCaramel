@@ -116,7 +116,7 @@ router.get("/", function (req, res, next) {
       // si oui, update
       if (timestamp - rows[0].timestamp > 3_600_000 || filter.dep != "1024") {
         console.log("Updating DB...");
-        updateDB(dep);
+        updateDB(filter.dep);
       } else {
         console.log("DB already up to date!");
       }
