@@ -3,12 +3,12 @@ var connection = require('../database.js')
 var router = express.Router()
 
 router.get('/', function (req, res, next) {
-  connection.query('SELECT * FROM caramel ORDER BY id desc', function (err, rows) {
+  connection.query('SELECT * FROM caramel ORDER BY price desc', function (err, rows) {
     if (err) {
       req.flash('error', err)
-      res.render('profile', { data: '' })
+      res.render('apparts', { data: '' })
     } else {
-      res.render('profile', { data: rows })
+      res.render('apparts', { data: rows })
     }
   })
 })

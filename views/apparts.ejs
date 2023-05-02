@@ -12,6 +12,7 @@
     />
   </head>
   <body>
+    <a href="/update">Update !</a>
     <div class="container mt-4">
       <% if (messages.success) { %>
       <p class="alert alert-success mt-4"><%- messages.success %></p>
@@ -20,12 +21,13 @@
       <table class="table">
         <thead>
           <tr>
-            <th>#Id</th>
+            <th>Id</th>
             <th>Bedrooms</th>
             <th>Rooms</th>
             <th>City</th>
             <th>Living Area</th>
             <th>Price</th>
+            <th>Title</th>
           </tr>
         </thead>
         <tbody>
@@ -35,8 +37,9 @@
             <td><%= data[i].bedrooms %></td>
             <td><%= data[i].rooms %></td>
             <td><%= data[i].city %></td>
-            <td><%= data[i].livingArea %>m²</td>
-            <td><%= data[i].price %>$</td>
+            <td><%= data[i].livingArea %> m²</td>
+            <td><%= data[i].price %> €</td>
+            <td><%= data[i].title %></td>
 
           </tr>
           <% } }else{ %>
@@ -48,4 +51,5 @@
       </table>
     </div>
   </body>
+
 </html>

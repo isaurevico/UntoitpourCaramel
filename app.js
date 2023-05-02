@@ -10,7 +10,9 @@ var session = require('express-session')
 var mysql = require('mysql')
 var connection = require('./database')
 var nodeRoutes = require('./routes/index')
-var userRoute = require('./routes/users')
+var appartsRoutes = require('./routes/apparts')
+var updatesRoutes = require('./routes/update')
+
 var app = express()
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
@@ -31,7 +33,8 @@ app.use(
 app.use(flash())
 
 app.use('/', nodeRoutes)
-app.use('/users', userRoute)
+app.use('/apparts', appartsRoutes)
+app.use('/update', updatesRoutes)
 app.use(function (req, res, next) {
   next(createError(404))
 })
