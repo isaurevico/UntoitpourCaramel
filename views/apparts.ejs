@@ -29,6 +29,7 @@
             <th>Price</th>
             <th>Title</th>
             <th>Link</th>
+            <th>Photo</th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +43,7 @@
             <td><%= data[i].price %> €</td>
             <td><%= data[i].title %></td>
             <td><a href="<%= data[i].permalink %>">Link</a></td>
+            <td><img src="<%= data[i].photos %>" alt="" /></td>
 
           </tr>
           <% } }else{ %>

@@ -57,6 +57,7 @@ function updateDB() {
         livingArea: res["items"][i]["livingArea"],
         price: res["items"][i]["price"],
         permalink: res["items"][i]["permalink"],
+        photos: res["items"][i]["photos"],
       };
 
       // On retire les apostrophes des valeurs pour éviter les erreurs SQL
@@ -67,7 +68,7 @@ function updateDB() {
       }
 
       // On insère les données dans la base de données
-      let query = `INSERT IGNORE INTO \`caramel\` (\`id\`, \`bedrooms\`, \`businessUnit\`, \`city\`, \`rooms\`, \`title\`, \`livingArea\`, \`price\`, \`permalink\`) VALUES ('${obj.id}', '${obj.bedrooms}', '${obj.businessUnit}', '${obj.city}', '${obj.rooms}', '${obj.title}', '${obj.livingArea}', '${obj.price}', '${obj.permalink}');`;
+      let query = `REPLACE INTO \`caramel\` (\`id\`, \`bedrooms\`, \`businessUnit\`, \`city\`, \`rooms\`, \`title\`, \`livingArea\`, \`price\`, \`permalink\`, \`photos\`) VALUES ('${obj.id}', '${obj.bedrooms}', '${obj.businessUnit}', '${obj.city}', '${obj.rooms}', '${obj.title}', '${obj.livingArea}', '${obj.price}', '${obj.permalink}', '${obj.photos[0]}');`;
       connection.query(query, (err, res) => {
         if (err) throw err;
       });
@@ -84,13 +85,13 @@ function updateDB() {
 }
 
 router.get("/", function (req, res, next) {
-  // verifier que last update pas ya 5min
+  // verifier que last update < 1h
   connection.query(
     "SELECT timestamp FROM updates ORDER BY id DESC",
     function (err, rows) {
       let timestamp = Date.now();
       // si oui, update
-      if (timestamp - rows[0].timestamp > 1024) {
+      if (timestamp - rows[0].timestamp > 3_600_000) {
         console.log("Updating DB...");
         updateDB();
       } else {
