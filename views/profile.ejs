@@ -21,17 +21,23 @@
         <thead>
           <tr>
             <th>#Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Action</th>
+            <th>Bedrooms</th>
+            <th>Rooms</th>
+            <th>City</th>
+            <th>Living Area</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
           <% if(data.length){ for(var i = 0; i< data.length; i++) {%>
           <tr>
-            <th scope="row"><%= (i+1) %></th>
-            <td><%= data[i].name%></td>
-            <td><%= data[i].email%></td>
+            <th scope="row"><%= data[i].id %></th>
+            <td><%= data[i].bedrooms %></td>
+            <td><%= data[i].rooms %></td>
+            <td><%= data[i].city %></td>
+            <td><%= data[i].livingArea %>m²</td>
+            <td><%= data[i].price %>$</td>
+
           </tr>
           <% } }else{ %>
           <tr>
