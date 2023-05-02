@@ -57,7 +57,7 @@ db.connect(function (err) {
 
 module.exports = { db, updateDB };
 
-updateDB();
+// updateDB();
 
 /*
 ===Structure de données===

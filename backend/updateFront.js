@@ -22,16 +22,18 @@ db.query("SELECT * FROM caramel", (err, res) => {
   console.log(obj_list);
 });
 
-// let annonces = document.getElementsByClassName("annonce");
+let annonces = document.getElementsByClassName("annonce");
 
-// for (annonce in annonces) {
-//   let i = 0;
-//   let prix = annonce.getElementsByClassName("annoncePrice")[0];
-//   let ville = annonce.getElementsByClassName("annonceCity")[0];
-//   let pieces = annonce.getElementsByClassName("annonceRooms")[0];
-//   let desc = annonce.getElementsByClassName("annonceDesc")[0];
+for (annonce in annonces) {
+  let i = 0;
+  let prix = annonce.getElementsByClassName("annoncePrice")[0];
+  let ville = annonce.getElementsByClassName("annonceCity")[0];
+  let pieces = annonce.getElementsByClassName("annonceRooms")[0];
+  let desc = annonce.getElementsByClassName("annonceDesc")[0];
 
-//   prix.innerHTML = obj["items"][i]["price"] + " €";
-//   console.log(obj["items"][i]["price"]);
-//   i++;
-// }
+  prix.innerHTML = obj_list[i].price + " €";
+  ville.innerHTML = obj_list[i].city;
+  pieces.innerHTML = obj_list[i].rooms + " pièces";
+  desc.innerHTML = obj_list[i].title;
+  i++;
+}

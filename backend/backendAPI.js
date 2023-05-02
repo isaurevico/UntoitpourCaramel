@@ -1,6 +1,4 @@
-// import updateDB from "./updateDB.js";
-
-const db = require("./updateDB.js")
+// const db = require("./updateDB.js")
 const axios = require("axios");
 
 // import db from "./updateDB.js";
