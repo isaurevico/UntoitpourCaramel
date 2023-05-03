@@ -5,6 +5,10 @@ var router = express.Router();
 router.get("/", function (req, res, next) {
   let query = "";
 
+  if (!isNaN(req.query.search)) {
+    updateDB(req.query.search);
+  }
+
   switch (req.query.search) {
     case "price":
       query = `SELECT * FROM caramel ORDER BY price`;

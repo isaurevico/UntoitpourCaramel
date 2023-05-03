@@ -86,28 +86,6 @@ function updateDB(department = "59") {
 }
 
 router.get("/", function (req, res, next) {
-
-    // var filter = {
-    //     dep: "1024",
-    //     city: "",
-    //     bedrooms: "",
-    //     rooms: "",
-    //     livingArea: "",
-    //     priceMin: "",
-    //     priceMax: "",
-    // };
-
-    // // Si on filtre
-    // if (req.url != "/") {
-    //     filter.dep = req.query.dep;
-    //     filter.city = req.query.city;
-    //     filter.bedrooms = req.query.bedrooms;
-    //     filter.rooms = req.query.rooms;
-    //     filter.livingArea = req.query.livingArea;
-    //     filter.priceMin = req.query.priceMin;
-    //     filter.priceMax = req.query.priceMax;
-    // }
-
   // verifier que last update < 1h
   connection.query(
     "SELECT timestamp FROM updates ORDER BY id DESC",
