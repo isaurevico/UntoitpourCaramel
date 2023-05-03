@@ -12,6 +12,8 @@ var connection = require('./database')
 var nodeRoutes = require('./routes/index')
 var appartsRoutes = require('./routes/apparts')
 var updatesRoutes = require('./routes/update')
+var searchRoutes = require('./routes/search')
+var filterRoutes = require('./routes/filter')
 
 var app = express()
 app.set('views', path.join(__dirname, 'views'))
@@ -35,6 +37,9 @@ app.use(flash())
 app.use('/', nodeRoutes)
 app.use('/apparts', appartsRoutes)
 app.use('/update', updatesRoutes)
+app.use('/search', searchRoutes)
+app.use('/filter', filterRoutes)
+
 app.use(function (req, res, next) {
   next(createError(404))
 })

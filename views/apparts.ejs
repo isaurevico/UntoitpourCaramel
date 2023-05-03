@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>
-      Node Js MySQL Fetch and Show Records from MySQL Database Example
-    </title>
+    <title>Appartements</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -50,14 +48,15 @@
               >
             </li>
           </ul>
-          <form class="d-flex">
+          <form class="d-flex" method="get" action="/search">
             <input
               class="form-control me-2"
               type="text"
               placeholder="Chercher"
               id="search"
+              name="search"
             />
-            <button class="btn btn-primary" type="button">
+            <button class="btn btn-primary" type="submit">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </form>
@@ -76,16 +75,39 @@
         ></button>
       </div>
       <div class="offcanvas-body">
-
-        <form action="/update" method="get">
-          <input type="text" name="dep" id="dep" placeholder="Département"><br>
-          <input type="text" name="city" id="city" placeholder="Ville"><br>
-          <input type="text" name="bedrooms" id="bedrooms" placeholder="Chambres"><br>
-          <input type="text" name="rooms" id="rooms" placeholder="Pièces"><br>
-          <input type="text" name="livingArea" id="livingArea" placeholder="Surface"><br>
-          <input type="text" name="priceMin" id="priceMin" placeholder="Prix min"><br>
-          <input type="text" name="priceMax" id="priceMax" placeholder="Prix max"><br>
-          <br>
+        <form action="/filter" method="get">
+          <input type="text" name="city" id="city" placeholder="Ville" /><br />
+          <input
+            type="text"
+            name="bedrooms"
+            id="bedrooms"
+            placeholder="Chambres"
+          /><br />
+          <input
+            type="text"
+            name="rooms"
+            id="rooms"
+            placeholder="Pièces"
+          /><br />
+          <input
+            type="text"
+            name="livingArea"
+            id="livingArea"
+            placeholder="Surface"
+          /><br />
+          <input
+            type="text"
+            name="priceMin"
+            id="priceMin"
+            placeholder="Prix min"
+          /><br />
+          <input
+            type="text"
+            name="priceMax"
+            id="priceMax"
+            placeholder="Prix max"
+          /><br />
+          <br />
           <button class="btn btn-secondary" type="submit">Appliquer</button>
         </form>
       </div>
@@ -135,7 +157,7 @@
         </div>
       </div>
       <% } }else{ %>
-      <p>No data ever existed.</p>
+      <p>Aucune annonce ne correspond à vos filtres.</p>
       <% } %>
 
       <!-- <table class="table">
