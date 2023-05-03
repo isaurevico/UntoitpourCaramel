@@ -1,8 +1,14 @@
 body {
-  padding: 50px;
+  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+img.chien {
+  position: absolute;
+  transform: scale(0.5);
+  top: -100px;
 }
