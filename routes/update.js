@@ -41,9 +41,8 @@ class SeLogerAPI {
 
 function updateDB(department = "59") {
   let selogerAPI = new SeLogerAPI();
-//   let zipCode = document.getElementById("zipCode").value;
-
   selogerAPI.getPropertiesList(department).then(function (properties59) {
+    console.log(properties59);
     const res = JSON.parse(JSON.stringify(properties59));
 
     // On stocke les données voulues dans un objet
@@ -92,9 +91,9 @@ router.get("/", function (req, res, next) {
     function (err, rows) {
       let timestamp = Date.now();
       // si oui, update
-      if (timestamp - rows[0].timestamp > 3_600_000 ) {
+      if (timestamp - rows[0].timestamp > 3_600_000) {
         console.log("Updating DB...");
-        updateDB(filter.dep);
+        updateDB();
       } else {
         console.log("DB already up to date!");
       }
@@ -103,4 +102,4 @@ router.get("/", function (req, res, next) {
   res.redirect("/apparts");
 });
 
-module.exports = router;
+(module.exports = router), updateDB;

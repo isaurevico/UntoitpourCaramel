@@ -1,12 +1,13 @@
 var express = require("express");
 var connection = require("../database.js");
+var updateDB = require("./update.js");
 var router = express.Router();
 
 router.get("/", function (req, res, next) {
   let query = "";
-
   if (!isNaN(req.query.search)) {
     updateDB(req.query.search);
+    res.redirect("/apparts");
   }
 
   switch (req.query.search) {

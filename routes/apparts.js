@@ -2,7 +2,7 @@ var express = require("express");
 var connection = require("../database.js");
 var router = express.Router();
 
-router.get("/", function (req, res, next) {
+router.get("/", function (req, res) {
   let query = "SELECT * FROM caramel ORDER BY price desc";
 
   // if (req.url != "/") {
